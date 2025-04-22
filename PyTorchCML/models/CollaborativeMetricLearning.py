@@ -56,9 +56,12 @@ class CollaborativeMetricLearning(BaseEmbeddingModel):
         # get enmbeddigs
         u_emb = self.user_embedding(users)
         i_emb = self.item_embedding(items)
+        print("u_emb", u_emb.shape)
+        print("i_emb", i_emb.shape) 
 
         # compute distance
         dist = torch.cdist(u_emb, i_emb).reshape(-1)
+        print("dist", dist.shape)
 
         max_dist = 2 * self.max_norm if self.max_norm is not None else 100
 
